@@ -1,0 +1,166 @@
+{% extends "layout.html" %}
+
+{% block title %}تسجيل الدخول - مركز الرسالة التعليمي{% endblock %}
+
+{% block extra_css %}
+<style>
+    .auth-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        padding: 20px;
+        background-color: #f8f9fa;
+    }
+
+    .auth-form {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .auth-form h2 {
+        margin-bottom: 20px;
+        font-size: 2rem;
+        color: #004d40;
+    }
+
+    .auth-form .form-group {
+        margin-bottom: 15px;
+        text-align: right;
+    }
+
+    .auth-form .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .auth-form .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .auth-form .form-group .form-check {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .auth-form .form-group .form-check input {
+        width: auto;
+    }
+
+    .auth-form button {
+        width: 100%;
+        padding: 10px;
+        background-color: white;
+        /* لون الزر الافتراضي */
+        color: #aaa;
+        /* لون النص الافتراضي */
+        border: 1px solid #ddd;
+        /* حدود رمادية */
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: not-allowed;
+        /* مؤشر "غير مسموح" */
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    .auth-form button:enabled {
+        background-color: #00b894;
+        /* لون الزر عند التمكين */
+        color: white;
+        /* لون النص عند التمكين */
+        border-color: #00b894;
+        /* حدود خضراء */
+        cursor: pointer;
+        /* مؤشر "مسموح" */
+    }
+
+    .auth-form p {
+        margin-top: 15px;
+    }
+
+    .auth-form a {
+        color: #00b894;
+        text-decoration: none;
+    }
+
+    .auth-form a:hover {
+        text-decoration: underline;
+    }
+
+    .auth-form .error-message {
+        color: red;
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-form">
+        <h2>تسجيل الدخول</h2>
+        <form method="POST" action="{{ url_for('auth.login') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.email.label }}
+                {{ form.email(class="form-control", id="email") }}
+                {% if form.email.errors %}
+                <div class="error-message">
+                    {{ form.email.errors[0] }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }}
+                {{ form.password(class="form-control", id="password") }}
+                {% if form.password.errors %}
+                <div class="error-message">
+                    {{ form.password.errors[0] }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    {{ form.remember_me(class="form-check-input") }}
+                    {{ form.remember_me.label(class="form-check-label") }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary", id="submit-btn", disabled=true) }}
+            </div>
+        </form>
+        <p>ليس لديك حساب؟ <a href="{{ url_for('auth.register') }}">إنشاء حساب</a></p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const submitButton = document.getElementById('submit-btn');
+
+        function checkInputs() {
+            if (emailInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
+                submitButton.disabled = false; // تمكين الزر
+            } else {
+                submitButton.disabled = true; // تعطيل الزر
+            }
+        }
+
+        emailInput.addEventListener('input', checkInputs);
+        passwordInput.addEventListener('input', checkInputs);
+    });
+</script>
+{% endblock %}

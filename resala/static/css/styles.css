@@ -1,0 +1,914 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cairo", sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Navbar Container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #008f68;
+  /* لون الخلفية */
+  color: white;
+  /* لون النص */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* ظل خفيف */
+}
+
+/* Logo */
+.logo img {
+  height: 50px;
+  /* ارتفاع الشعار */
+  transition: transform 0.3s ease;
+  /* تأثير تحويل عند التمرير */
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+  /* تكبير الشعار عند التمرير */
+}
+
+/* Menu Toggle (Hamburger Icon) */
+.menu-toggle {
+  display: none;
+  /* مخفي على الكمبيوتر */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.menu-toggle .hamburger {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Menu Items */
+.menu {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  /* المسافة بين العناصر */
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  /* لون خلفية عند التمرير */
+  color: #f0f0f0;
+  /* لون النص عند التمرير */
+}
+
+/* Active Link (Optional) */
+.menu li a.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  /* لون خلفية للرابط النشط */
+  font-weight: bold;
+}
+
+/* Navbar Scroll Effect */
+.navbar.scrolled {
+  background-color: rgba(0, 143, 104, 0.9);
+  /* لون خلفية شفاف عند التمرير */
+  padding: 5px 20px;
+  /* تقليل التباعد عند التمرير */
+}
+
+.navbar.scrolled .logo img {
+  height: 40px;
+  /* تصغير الشعار عند التمرير */
+}
+
+/* Hero Section */
+
+.cta-button {
+  background-color: #00b894;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #00724e;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  background: linear-gradient(135deg, #00b894, #004d40);
+  overflow: hidden;
+}
+
+.hero-content {
+  z-index: 2;
+  color: #ffffff;
+  max-width: 500px;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  animation: fadeIn 2s ease-out;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  animation: slideIn 1.5s ease-out;
+}
+
+.hero-content .cta-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: #ffffff;
+  background-color: #00b894;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  animation: bounce 2s infinite;
+}
+
+.hero-content .cta-button:hover {
+  background-color: #004d40;
+  transform: scale(1.05);
+}
+
+.hero-extra {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-extra img {
+  max-width: 250px;
+  height: auto;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-out;
+}
+
+.hero-extra .hero-benefits {
+  list-style-type: none;
+  padding: 0;
+  color: #ffffff;
+}
+
+.hero-extra .hero-benefits li {
+  font-size: 1.1rem;
+  margin: 5px 0;
+  position: relative;
+  padding-left: 25px;
+  animation: fadeIn 2s ease-out;
+}
+
+.hero-extra .hero-benefits li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00e676;
+  font-size: 1.2rem;
+}
+
+/* Services Section */
+.services {
+  padding: 40px 20px;
+  background-color: white;
+}
+
+.services-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.service-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.service-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-card img {
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+/* Teachers Section */
+.teachers {
+  padding: 40px 20px;
+  background-color: #e8f5e9;
+}
+
+.teachers-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.teacher-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.teacher-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.teacher-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.teacher-card img {
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* About Section */
+.about-us {
+  padding: 40px 20px;
+  background-color: white;
+}
+
+.about-us img {
+  margin-top: 20px;
+  width: 60%;
+  border-radius: 10px;
+  animation: fadeIn 2s ease-out;
+}
+
+/* Testimonials Section */
+.testimonials {
+  background-color: #00b894;
+  color: white;
+  padding: 40px 20px;
+}
+
+.testimonials-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.testimonial {
+  background-color: white;
+  color: #333;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.testimonial.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Booking Section */
+.booking {
+  padding: 40px 20px;
+  background-color: #e8f5e9;
+}
+
+.booking .cta-button {
+  margin-top: 20px;
+}
+
+/* Contact Form Section */
+.contact-form {
+  padding: 40px 20px;
+  background-color: white;
+}
+
+.contact-form h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #004d40;
+}
+
+.contact-form form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.contact-form button {
+  background-color: #00b894;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #004d40;
+}
+
+/* Google Maps Section */
+.map {
+  padding: 40px 20px;
+  background-color: white;
+}
+
+.map h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #004d40;
+}
+
+.map iframe {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+  background-color: #004d40;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer p {
+  margin-bottom: 10px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #00b894;
+}
+
+/* Scroll Progress Bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: #00b894;
+  width: 0%;
+  z-index: 1000;
+}
+
+/* Back to Top Button */
+#back-to-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 10px 15px;
+  background-color: #00b894;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#back-to-top:hover {
+  background-color: #004d40;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar .menu {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .menu-toggle {
+    display: flex; /* إظهار زر القائمة على الجوال */
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* إخفاء القائمة خارج الشاشة */
+    height: 100vh;
+    width: 250px; /* عرض القائمة */
+    background-color: #008f68; /* لون خلفية القائمة */
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 20px 20px; /* تباعد داخلي */
+    transition: right 0.3s ease; /* انتقال سلس */
+  }
+
+  .menu.active {
+    right: 0; /* إظهار القائمة عند النقر */
+  }
+
+  .menu li a {
+    width: 100%; /* عرض العناصر بالكامل */
+    padding: 15px; /* تباعد داخلي للعناصر */
+  }
+
+  /* Hamburger Icon Animation */
+  .menu-toggle.active .hamburger:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active .hamburger:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active .hamburger:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero-extra {
+    flex-direction: column;
+  }
+
+  .services-container,
+  .teachers-container,
+  .testimonials-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .logo img {
+    max-width: 120px;
+  }
+
+  .navbar .menu li a {
+    font-size: 0.9rem;
+  }
+
+  .menu-toggle {
+    display: flex; /* إظهار زر القائمة على الجوال */
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* إخفاء القائمة خارج الشاشة */
+    height: 100vh;
+    width: 250px; /* عرض القائمة */
+    background-color: #008f68; /* لون خلفية القائمة */
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 20px 20px; /* تباعد داخلي */
+    transition: right 0.3s ease; /* انتقال سلس */
+  }
+
+  .menu.active {
+    right: 0; /* إظهار القائمة عند النقر */
+  }
+
+  .menu li a {
+    width: 100%; /* عرض العناصر بالكامل */
+    padding: 15px; /* تباعد داخلي للعناصر */
+  }
+
+  /* Hamburger Icon Animation */
+  .menu-toggle.active .hamburger:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active .hamburger:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active .hamburger:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+
+  .hero .cta-button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .hero-extra img {
+    max-width: 100%;
+  }
+}
+
+/* Particles JS */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background: transparent;
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+}
+
+/* Image Grid */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.image-grid img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 12px;
+  transition: transform 0.5s ease, opacity 1s ease;
+  object-fit: cover;
+}
+
+/* Animations */
+.rotate {
+  animation: rotate 5s linear infinite;
+}
+
+.zoom-in {
+  animation: zoom-in 5s ease-in-out infinite;
+}
+
+.fade-in {
+  animation: fade-in 3s ease-in-out forwards;
+}
+
+.fade-out {
+  animation: fade-out 3s ease-in-out forwards infinite alternate;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes zoom-in {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Navbar Container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #008f68; /* لون الخلفية */
+  color: white; /* لون النص */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+}
+
+/* Logo */
+.logo img {
+  height: 50px; /* ارتفاع الشعار */
+  transition: transform 0.3s ease; /* تأثير تحويل عند التمرير */
+}
+
+.logo img:hover {
+  transform: scale(1.1); /* تكبير الشعار عند التمرير */
+}
+
+/* Menu Toggle (Hamburger Icon) */
+.menu-toggle {
+  display: none; /* مخفي على الكمبيوتر */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.menu-toggle .hamburger {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Menu Items */
+.menu {
+  display: flex;
+  list-style: none;
+  gap: 20px; /* المسافة بين العناصر */
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* لون خلفية عند التمرير */
+  color: #f0f0f0; /* لون النص عند التمرير */
+}
+
+/* Active Link (Optional) */
+.menu li a.active {
+  background-color: rgba(255, 255, 255, 0.2); /* لون خلفية للرابط النشط */
+  font-weight: bold;
+}
+
+.close-button {
+  display: none;
+}
+.close-menu {
+  display: none;
+}
+
+/* Responsive Navbar for Mobile */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    /* إظهار زر القائمة على الجوال */
+  }
+
+  .menu {
+    position: fixed;
+    top: -100%;
+    /* إخفاء القائمة خارج الشاشة من الأعلى */
+    left: 0;
+    width: 100%;
+    height: 70%;
+    /* عرض القائمة بالكامل */
+    background: linear-gradient(135deg, #00724e, #004d40);
+    /* تدرج لوني مختلف */
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 20px 20px;
+    /* تباعد داخلي */
+    transition: top 0.3s ease;
+    /* انتقال سلس */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* ظل أسفل القائمة */
+    z-index: 999;
+    /* التأكد من ظهور القائمة فوق العناصر الأخرى */
+  }
+
+  .menu.active {
+    top: 0;
+    /* إظهار القائمة عند النقر */
+  }
+
+  .menu li a {
+    width: 100%;
+    /* عرض العناصر بالكامل */
+    padding: 15px;
+    /* تباعد داخلي للعناصر */
+    color: white;
+    /* لون النص */
+    text-align: center;
+    /* توسيط النص */
+    transition: background-color 0.3s ease;
+    /* انتقال سلس */
+  }
+
+  .menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    /* لون خلفية عند التمرير */
+  }
+
+  /* زر الإغلاق */
+  .close-menu {
+    display: flex;
+    justify-content: flex-end;
+    /* وضع زر الإغلاق في الزاوية اليمنى */
+  }
+
+  .close-button {
+    display: flex;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .close-button:hover {
+    color: #f0f0f0;
+  }
+
+  /* Hamburger Icon Animation */
+  .menu-toggle.active .hamburger:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active .hamburger:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active .hamburger:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
